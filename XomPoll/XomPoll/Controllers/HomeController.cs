@@ -14,5 +14,15 @@ namespace XomPoll.Controllers
 
             return View();
         }
+
+        public ActionResult Home()
+        {
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }
