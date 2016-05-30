@@ -42,9 +42,18 @@ namespace XomPoll.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult AnswerQuestion(int questionid, int answerid) {
-
-        //}
+        [HttpPost]
+        public ActionResult AnswerQuestion(int questionid, int answerid) {
+            try {
+                var answer = new Answer {
+                    QuestionId = questionid,
+                    AnswerOptionId = answerid
+                };
+                _questionRepository.AnswerQuestion(answer);
+                return Json(new { success = true, answerid = answer.Id });
+            }catch(Exception ex) {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
     }
 }
