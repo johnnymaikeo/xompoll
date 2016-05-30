@@ -14,6 +14,7 @@ namespace XomPoll.Core.Repository {
         void Update(Event item);
         object LoadEventByUrlName(string url);
         object[] GetQuestionsByEventId(int id);
+        object[] GetEventsByUser(int userId);
     }
     public class EventRepository : IEventRepository  {
         private readonly IDataContextFactory _dataContextFactory;
@@ -70,6 +71,17 @@ namespace XomPoll.Core.Repository {
                 options.LoadWith<Question>(o => o.QuestionType);
                 ctx.LoadOptions = options;
                 return ctx.GetTable<Question>().Where(x => x.EventId == id).ToArray();
+            }
+        }
+
+        public object[] GetEventsByUser(int userId) {
+            using(var ctx = _dataContextFactory.Create()) {
+                return ctx.GetTable<Event>().Where(x => x.AdminId == userId).Select(x=>new {
+                    Id = x.Id,
+                    Description = x.Description,
+                    Title = x.Title,
+                    UrlName = x.UrlName
+                }).ToArray();
             }
         }
     }

@@ -26,5 +26,16 @@ namespace XomPoll.Core.Repository {
                     }).ToArray();
             }
         }
+
+        public void AnswerQuestion(int questionid, int answerid) {
+            using(var ctx = _dataContextFactory.Create()) {
+                var answer = new Answer {
+                    QuestionId = questionid,
+                    AnswerOptionId = answerid
+                };
+                ctx.InsertOnSubmit(answer);
+                ctx.SubmitChanges();
+            }
+        }
     }
 }

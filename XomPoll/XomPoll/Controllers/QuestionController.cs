@@ -25,5 +25,10 @@ namespace XomPoll.Controllers
             return Json(_questionRepository.GetAnswerOptionsByQuestionId(questionid),
                             JsonRequestBehavior.AllowGet);
         }
+
+        //[HttpPost]
+        //public ActionResult AnswerQuestion(int questionid, int answerid) {
+
+        //}
     }
 }

@@ -51,5 +51,10 @@ namespace XomPoll.Controllers
             return Json(_eventRepository.GetQuestionsByEventId(eventid), JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public ActionResult GetEventsByUser(int userid) {
+            return Json(_eventRepository.GetEventsByUser(userid), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
