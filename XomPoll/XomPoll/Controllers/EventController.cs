@@ -15,7 +15,12 @@ namespace XomPoll.Controllers
         public EventController(IEventRepository eventRepository) {
             _eventRepository = eventRepository;
         }
-        
+
+        public ActionResult Event ()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Create(string title, string description, string urlname, 
                                         string initdate, string enddate)

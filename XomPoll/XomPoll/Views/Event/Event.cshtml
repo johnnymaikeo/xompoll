@@ -1,0 +1,145 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col s12 l6">
+            <div class="styled-button" ng-click="openCreateEventModal()">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <span>Create Poll</span>
+            </div>
+        </div>
+        <div class="col s12 l6">
+            <h1>My Polls</h1>
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Active</h4></li>
+                <li class="collection-item">
+                    <div>
+                        <span class="truncate">this is a very long title</span>
+                        <a href="#!" class="secondary-content">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="collection-item">
+                    <div>
+                        <span class="truncate">Alvin</span>
+                        <a href="#!" class="secondary-content">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="collection-header"><h4>Inactive</h4></li>
+                <li class="collection-item">
+                    <div>
+                        <span class="truncate">Alvin</span>
+                        <a href="#!" class="secondary-content">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="collection-item">
+                    <div>
+                        <span class="truncate">Alvin</span>
+                        <a href="#!" class="secondary-content">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Create Event -->
+
+<div id="create-event-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <h4>New Event</h4>
+                <p>Bacon ipsum dolor amet pork tri-tip pig jerky prosciutto ribeye. Sausage short ribs frankfurter turkey. Tenderloin short loin corned beef, strip steak alcatra jerky capicola hamburger landjaeger swine chicken short ribs cow pork loin kevin. Rump ham hock pork belly porchetta leberkas.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <label for="poll-name">Poll Name</label>
+                <input type="text" id="poll-name" ng-model="poll.title" />
+            </div>
+            <div class="col s12 m6">
+                <label for="poll-id">Poll URL</label>
+                <input type="text" id="poll-id" ng-model="poll.urlname" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12">
+                <label for="poll-description">Description</label>
+                <textarea id="poll-description" class="materialize-textarea" ng-model="poll.description"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <label for="inputCreated">Start date</label>
+                <input input-date
+                       type="text"
+                       name="created"
+                       id="inputCreated"
+                       ng-model="poll.initdate"
+                       container="body"
+                       format="dd/mm/yyyy"
+                       months-full="{{ month }}"
+                       months-short="{{ monthShort }}"
+                       weekdays-full="{{ weekdaysFull }}"
+                       weekdays-short="{{ weekdaysShort }}"
+                       weekdays-letter="{{ weekdaysLetter }}"
+                       disable="disable"
+                       min="{{ minDate }}"
+                       max="{{ maxDate }}"
+                       today="today"
+                       clear="clear"
+                       close="close"
+                       select-years="15"
+                       on-start="onStart()"
+                       on-render="onRender()"
+                       on-open="onOpen()"
+                       on-close="onClose()"
+                       on-set="onSet()"
+                       on-stop="onStop()" />
+            </div>
+            <div class="col s12 m6">
+                <label for="inputCreated">End date</label>
+                <input input-date
+                       type="text"
+                       name="created"
+                       id="inputCreated"
+                       ng-model="poll.enddate"
+                       container="body"
+                       format="dd/mm/yyyy"
+                       months-full="{{ month }}"
+                       months-short="{{ monthShort }}"
+                       weekdays-full="{{ weekdaysFull }}"
+                       weekdays-short="{{ weekdaysShort }}"
+                       weekdays-letter="{{ weekdaysLetter }}"
+                       disable="disable"
+                       min="{{ minDate }}"
+                       max="{{ maxDate }}"
+                       today="today"
+                       clear="clear"
+                       close="close"
+                       select-years="15"
+                       on-start="onStart()"
+                       on-render="onRender()"
+                       on-open="onOpen()"
+                       on-close="onClose()"
+                       on-set="onSet()"
+                       on-stop="onStop()" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="createPoll()">Create</a>
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat left">Dismiss</a>
+    </div>
+</div>
