@@ -16,12 +16,7 @@ namespace XomPoll
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include(
@@ -30,8 +25,9 @@ namespace XomPoll
             bundles.Add(new StyleBundle("~/Content/materialize",
                       "~/Content/materialize/css/materialize.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/materialize",
-                      "~/Scripts/materialize/materialize.js"));
+            bundles.Add(new ScriptBundle("~/bundles/materialize").Include(
+                      "~/Scripts/materialize/materialize.js",
+                      "~/Scripts/angular-materialize.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
                       "~/Scripts/angular.js",
