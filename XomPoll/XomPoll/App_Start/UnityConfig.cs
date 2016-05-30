@@ -16,6 +16,7 @@ namespace XomPoll
             container.RegisterType<IDataContextFactory, Linq2SqlDataContextFactory>();
             container.RegisterType<IEventRepository, EventRepository>();
             container.RegisterType<IQuestionRepository, QuestionRepository>();
+            container.RegisterType<IQuestionTypeRepository, QuestionTypeRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

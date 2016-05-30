@@ -259,6 +259,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\QuestionTypeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -422,6 +423,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Event\" />
     <Folder Include="Views\Questions\" />
+    <Folder Include="Views\QuestionType\" />
     <Folder Include="Views\Question\" />
   </ItemGroup>
   <ItemGroup>
