@@ -34,5 +34,16 @@ namespace XomPoll.Controllers
                 return Json(new { success = false, message = ex.Message });
             }
         }
+        [Route("api/GetEventByUrl/{url}")]
+        [HttpGet]
+        public ActionResult GetEventByUrl(string url) {
+            try{
+                var item = _eventRepository.LoadEventByUrlName(url);
+                return Json(new { success = true, item = item }, JsonRequestBehavior.AllowGet);
+            }catch(Exception ex) {
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        
     }
 }
