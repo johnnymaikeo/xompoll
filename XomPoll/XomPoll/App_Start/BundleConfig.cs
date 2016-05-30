@@ -23,6 +23,25 @@ namespace XomPoll
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fontawesome").Include(
+                      "~/Content/font-awesome.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/materialize",
+                      "~/Content/materialize/css/materialize.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/materialize",
+                      "~/Scripts/materialize/materialize.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
+                      "~/Scripts/angular.js",
+                      "~/Scripts/angular-route.js",
+                      "~/Scripts/angular-sanitize.js",
+                      "~/Scripts/angular-animate.js",
+                      "~/Scripts/angular-touch.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                      "~/App/App.js"));
         }
     }
 }

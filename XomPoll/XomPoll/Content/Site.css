@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #181818;
+    color: #FFFFFF;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -15,3 +17,58 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/**/
+
+.red-background {
+    background-color: #ed1b2d;
+}
+
+.text-separator {
+    color: #282828;
+    text-align: center;
+    font-size: .8em;
+    background-image: url('Images/separator.png');
+}
+
+/**/
+
+.home-options {
+    display:block;
+    text-transform: uppercase;
+    width:30em;
+    line-height:3em;
+}
+
+    .home-options i {
+        display: inline-block;
+        color: #ed1b2d;
+        border: 0.05em solid #ed1b2d;
+        border-radius: 50%;
+        vertical-align:middle;
+        text-align:center;
+        line-height:1.3em;
+        font-size:2em;
+        width:1.5em;
+        height:1.5em;
+        margin:0px;
+        padding:0px;
+        cursor: pointer;
+    }
+
+    .home-options span {
+        line-height:3.7em;
+        border: 0.05em solid #ed1b2d;
+        border-radius: 2em;
+        height: 3.7em;
+        vertical-align:middle;
+        text-align: center;
+        margin-left: 1em;
+        padding:0.6em;
+        width: 200px;
+        font-size:.8em;
+        padding:0;
+        display: inline-block;
+        width: 30em;
+        cursor:pointer;
+    }
