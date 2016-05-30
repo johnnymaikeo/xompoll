@@ -30,8 +30,28 @@ namespace XomPoll.Controllers
                     AdminId = 1,
                 };
                 _eventRepository.Create(newEvent);
-                return Json(new { success = true });
+                return Json(new { success = true, newid = newEvent.Id});
             }catch(Exception ex) {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Update(int id, string title, string description, string urlname,
+                                        string initdate, string enddate) {
+            try {
+                var eventToUpdate = new Event {
+                    Id = id,
+                    Title = title,
+                    Description = description,
+                    UrlName = urlname,
+                    InitDate = DateTime.Parse(initdate),
+                    EndDate = DateTime.Parse(enddate),
+                    AdminId = 1,
+                };
+                _eventRepository.Update(eventToUpdate);
+                return Json(new { success = true });
+            } catch(Exception ex) {
                 return Json(new { success = false, message = ex.Message });
             }
         }
