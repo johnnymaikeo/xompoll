@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="xompoll" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=xompoll.database.windows.net;Initial Catalog=xompoll;Persist Security Info=True;User ID=xompoll_admin" SettingsObjectName="XomPoll.Core.Properties.Settings" SettingsPropertyName="xompollConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Answer" Member="Answers">
+    <Type Name="Answer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AnswerOptionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descritpion" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Association Name="AnswerOption_Answer" Member="AnswerOption" ThisKey="AnswerOptionId" OtherKey="Id" Type="AnswerOption" IsForeignKey="true" />
+      <Association Name="Question_Answer" Member="Question" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AnswerOption" Member="AnswerOptions">
+    <Type Name="AnswerOption">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="AnswerOption_Answer" Member="Answers" ThisKey="Id" OtherKey="AnswerOptionId" Type="Answer" />
+      <Association Name="Question_AnswerOption" Member="Question" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuestionType" Member="QuestionTypes">
+    <Type Name="QuestionType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Association Name="QuestionType_Question" Member="Questions" ThisKey="Id" OtherKey="QuestionTypeId" Type="Question" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event" Member="Events">
+    <Type Name="Event">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="UrlName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="InitDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Event_Question" Member="Questions" ThisKey="Id" OtherKey="EventId" Type="Question" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Question" Member="Questions">
+    <Type Name="Question">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
+      <Association Name="Question_Answer" Member="Answers" ThisKey="Id" OtherKey="QuestionId" Type="Answer" />
+      <Association Name="Question_AnswerOption" Member="AnswerOptions" ThisKey="Id" OtherKey="QuestionId" Type="AnswerOption" />
+      <Association Name="Event_Question" Member="Event" ThisKey="EventId" OtherKey="Id" Type="Event" IsForeignKey="true" />
+      <Association Name="QuestionType_Question" Member="QuestionType" ThisKey="QuestionTypeId" OtherKey="Id" Type="QuestionType" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

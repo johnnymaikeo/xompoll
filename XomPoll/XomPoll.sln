@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XomPoll", "XomPoll\XomPoll.csproj", "{C49FA96D-0012-49F4-85B7-B9DBD00957C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XomPoll.Tests", "XomPoll.Tests\XomPoll.Tests.csproj", "{2423E3AC-E8FD-46C6-8EB8-1A3B7A73D378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XomPoll.Core", "XomPoll.Core\XomPoll.Core.csproj", "{E568C29F-3AB6-4C85-AE32-C3A45568E058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2423E3AC-E8FD-46C6-8EB8-1A3B7A73D378}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2423E3AC-E8FD-46C6-8EB8-1A3B7A73D378}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2423E3AC-E8FD-46C6-8EB8-1A3B7A73D378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E568C29F-3AB6-4C85-AE32-C3A45568E058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E568C29F-3AB6-4C85-AE32-C3A45568E058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E568C29F-3AB6-4C85-AE32-C3A45568E058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E568C29F-3AB6-4C85-AE32-C3A45568E058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
