@@ -10,7 +10,7 @@ namespace XomPoll.Core.Data {
         private readonly String connectionString;
 
         public Linq2SqlDataContextFactory() {
-            connectionString = ConfigurationManager.ConnectionStrings["XomPoll"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
 
         public IDataContext Create() {
