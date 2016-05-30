@@ -11,6 +11,7 @@ namespace XomPoll.Core.Repository {
     public interface IEventRepository {
         void Create(Event item);
         void Update(Event item);
+        object LoadEventByUrlName(string url);
     }
     public class EventRepository : IEventRepository  {
         private readonly IDataContextFactory _dataContextFactory;
@@ -23,6 +24,25 @@ namespace XomPoll.Core.Repository {
             using(var ctx = _dataContextFactory.Create()) {
                 ctx.InsertOnSubmit(item);
                 ctx.SubmitChanges();
+            }
+        }
+
+        public object LoadEventByUrlName(string url) {
+            using(var ctx = _dataContextFactory.Create()) {
+                var item = ctx.GetTable<Event>().SingleOrDefault(x => x.UrlName == url);
+                if(item != null) {
+                    var objectEvent = new {
+                        Id = item.Id,
+                        Description = item.Description,
+                        InitDate = item.InitDate.ToString(@"MM\/dd\/yyyy HH:mm"),
+                        EndDate = item.EndDate.ToString(@"MM\/dd\/yyyy HH:mm"),
+                        Title = item.Title,
+                        UrlName = item.UrlName
+                    };
+                    return objectEvent;
+                } else {
+                    throw new EventNotFoundException("Event not found on the database!");
+                }
             }
         }
 
@@ -43,7 +63,7 @@ namespace XomPoll.Core.Repository {
     }
 
     [Serializable]
-    internal class EventNotFoundException : Exception {
+    public class EventNotFoundException : Exception {
         public EventNotFoundException() {
         }
 
