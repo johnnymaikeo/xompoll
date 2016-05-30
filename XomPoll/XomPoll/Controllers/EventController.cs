@@ -27,6 +27,7 @@ namespace XomPoll.Controllers
                     UrlName = urlname,
                     InitDate = DateTime.Parse(initdate),
                     EndDate = DateTime.Parse(enddate),
+                    AdminId = 1,
                 };
                 _eventRepository.Create(newEvent);
                 return Json(new { success = true });
@@ -34,7 +35,7 @@ namespace XomPoll.Controllers
                 return Json(new { success = false, message = ex.Message });
             }
         }
-        [Route("api/GetEventByUrl/{url}")]
+
         [HttpGet]
         public ActionResult GetEventByUrl(string url) {
             try{
@@ -44,6 +45,11 @@ namespace XomPoll.Controllers
                 return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-        
+
+        [HttpGet]
+        public ActionResult GetQuestionsByEventId(int eventid) {
+            return Json(_eventRepository.GetQuestionsByEventId(eventid), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

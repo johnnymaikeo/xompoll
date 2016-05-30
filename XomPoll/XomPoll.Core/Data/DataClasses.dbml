@@ -26,17 +26,6 @@
       <Association Name="QuestionType_Question" Member="Questions" ThisKey="Id" OtherKey="QuestionTypeId" Type="Question" />
     </Type>
   </Table>
-  <Table Name="dbo.Event" Member="Events">
-    <Type Name="Event">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="UrlName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="InitDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Event_Question" Member="Questions" ThisKey="Id" OtherKey="EventId" Type="Question" />
-    </Type>
-  </Table>
   <Table Name="dbo.Question" Member="Questions">
     <Type Name="Question">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -45,8 +34,29 @@
       <Column Name="Description" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
       <Association Name="Question_Answer" Member="Answers" ThisKey="Id" OtherKey="QuestionId" Type="Answer" />
       <Association Name="Question_AnswerOption" Member="AnswerOptions" ThisKey="Id" OtherKey="QuestionId" Type="AnswerOption" />
-      <Association Name="Event_Question" Member="Event" ThisKey="EventId" OtherKey="Id" Type="Event" IsForeignKey="true" />
       <Association Name="QuestionType_Question" Member="QuestionType" ThisKey="QuestionTypeId" OtherKey="Id" Type="QuestionType" IsForeignKey="true" />
+      <Association Name="Event_Question" Member="Event" ThisKey="EventId" OtherKey="Id" Type="Event" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Association Name="Admin_Event" Member="Events" ThisKey="Id" OtherKey="AdminId" Type="Event" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Event" Member="Events">
+    <Type Name="Event">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="UrlName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="InitDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AdminId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Event_Question" Member="Questions" ThisKey="Id" OtherKey="EventId" Type="Question" />
+      <Association Name="Admin_Event" Member="Admin" ThisKey="AdminId" OtherKey="Id" Type="Admin" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
