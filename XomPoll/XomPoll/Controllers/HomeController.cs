@@ -17,11 +17,17 @@ namespace XomPoll.Controllers
 
         public ActionResult Home()
         {
-            return View();
+            return View("Home");
         }
 
         public ActionResult Login()
         {
+            return View("Login");
+        }
+
+        public ActionResult ViewTest()
+        {
+            ViewBag.Title = "TEST";
             return View();
         }
     }
