@@ -79,6 +79,16 @@ namespace XomPoll.Core.Repository {
                 return ctx.GetTable<Event>().Where(x => x.AdminId == userId).Select(x=>new {
                     Id = x.Id,
                     Description = x.Description,
+                    InitDate = x.InitDate,
+                    EndDate = x.EndDate,
+                    Title = x.Title,
+                    UrlName = x.UrlName
+                }).ToList()
+                .Select(x => new {
+                    Id = x.Id,
+                    Description = x.Description,
+                    InitDate = x.InitDate.ToString(@"MM\/dd\/yyyy HH:mm"),
+                    EndDate = x.EndDate.ToString(@"MM\/dd\/yyyy HH:mm"),
                     Title = x.Title,
                     UrlName = x.UrlName
                 }).ToArray();
