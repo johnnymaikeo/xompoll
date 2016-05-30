@@ -32,14 +32,35 @@ namespace XomPoll.Controllers
                     UrlName = urlname,
                     InitDate = DateTime.Parse(initdate),
                     EndDate = DateTime.Parse(enddate),
+                    AdminId = 1,
                 };
                 _eventRepository.Create(newEvent);
-                return Json(new { success = true });
+                return Json(new { success = true, newid = newEvent.Id});
             }catch(Exception ex) {
                 return Json(new { success = false, message = ex.Message });
             }
         }
-        [Route("api/GetEventByUrl/{url}")]
+
+        [HttpPost]
+        public ActionResult Update(int id, string title, string description, string urlname,
+                                        string initdate, string enddate) {
+            try {
+                var eventToUpdate = new Event {
+                    Id = id,
+                    Title = title,
+                    Description = description,
+                    UrlName = urlname,
+                    InitDate = DateTime.Parse(initdate),
+                    EndDate = DateTime.Parse(enddate),
+                    AdminId = 1,
+                };
+                _eventRepository.Update(eventToUpdate);
+                return Json(new { success = true });
+            } catch(Exception ex) {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
         [HttpGet]
         public ActionResult GetEventByUrl(string url) {
             try{
@@ -49,6 +70,16 @@ namespace XomPoll.Controllers
                 return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-        
+
+        [HttpGet]
+        public ActionResult GetQuestionsByEventId(int eventid) {
+            return Json(_eventRepository.GetQuestionsByEventId(eventid), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetEventsByUser(int userid) {
+            return Json(_eventRepository.GetEventsByUser(userid), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
