@@ -1,27 +1,18 @@
 ﻿<div class="container">
     <div class="row">
-        <div class="col s12 l6">
+        <div class="col s12 l12">
             <div class="styled-button" ng-click="openCreateEventModal()">
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                 <span>Create Poll</span>
             </div>
         </div>
-        <div class="col s12 l6">
+        <div class="col s12 l12">
             <h1>My Polls</h1>
             <ul class="collection with-header">
                 <li class="collection-header"><h4>Active</h4></li>
-                <li class="collection-item">
+                <li class="collection-item" ng-repeat="poll in mypolls | filter: {Active: true}">
                     <div>
-                        <span class="truncate">this is a very long title</span>
-                        <a href="#!" class="secondary-content">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div>
-                        <span class="truncate">Alvin</span>
+                        <span class="truncate" ng-bind="poll.Title"></span>
                         <a href="#!" class="secondary-content">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             <i class="fa fa-trash" aria-hidden="true"></i>
@@ -29,18 +20,9 @@
                     </div>
                 </li>
                 <li class="collection-header"><h4>Inactive</h4></li>
-                <li class="collection-item">
+                <li class="collection-item" ng-repeat="poll in mypolls | filter: {Active: false}">
                     <div>
-                        <span class="truncate">Alvin</span>
-                        <a href="#!" class="secondary-content">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div>
-                        <span class="truncate">Alvin</span>
+                        <span class="truncate" ng-bind="poll.Title"></span>
                         <a href="#!" class="secondary-content">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             <i class="fa fa-trash" aria-hidden="true"></i>
@@ -87,7 +69,7 @@
                        id="inputCreated"
                        ng-model="poll.initdate"
                        container="body"
-                       format="dd/mm/yyyy"
+                       format="mm/dd/yyyy"
                        months-full="{{ month }}"
                        months-short="{{ monthShort }}"
                        weekdays-full="{{ weekdaysFull }}"
@@ -115,7 +97,7 @@
                        id="inputCreated"
                        ng-model="poll.enddate"
                        container="body"
-                       format="dd/mm/yyyy"
+                       format="mm/dd/yyyy"
                        months-full="{{ month }}"
                        months-short="{{ monthShort }}"
                        weekdays-full="{{ weekdaysFull }}"

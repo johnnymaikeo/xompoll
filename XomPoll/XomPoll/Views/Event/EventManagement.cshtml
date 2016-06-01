@@ -1,0 +1,82 @@
+﻿Hello
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="row">
+                <div class="col s12 m6">
+                    <label for="poll-name">Poll Name</label>
+                    <input type="text" id="poll-name" ng-model="poll.title" />
+                </div>
+                <div class="col s12 m6">
+                    <label for="poll-id">Poll URL</label>
+                    <input type="text" id="poll-id" ng-model="poll.urlname" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12">
+                    <label for="poll-description">Description</label>
+                    <textarea id="poll-description" class="materialize-textarea" ng-model="poll.description"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <label for="inputCreated">Start date</label>
+                    <input input-date
+                           type="text"
+                           name="created"
+                           id="inputCreated"
+                           ng-model="poll.initdate"
+                           container="body"
+                           format="mm/dd/yyyy"
+                           months-full="{{ month }}"
+                           months-short="{{ monthShort }}"
+                           weekdays-full="{{ weekdaysFull }}"
+                           weekdays-short="{{ weekdaysShort }}"
+                           weekdays-letter="{{ weekdaysLetter }}"
+                           disable="disable"
+                           min="{{ minDate }}"
+                           max="{{ maxDate }}"
+                           today="today"
+                           clear="clear"
+                           close="close"
+                           select-years="15"
+                           on-start="onStart()"
+                           on-render="onRender()"
+                           on-open="onOpen()"
+                           on-close="onClose()"
+                           on-set="onSet()"
+                           on-stop="onStop()" />
+                </div>
+                <div class="col s12 m6">
+                    <label for="inputCreated">End date</label>
+                    <input input-date
+                           type="text"
+                           name="created"
+                           id="inputCreated"
+                           ng-model="poll.enddate"
+                           container="body"
+                           format="mm/dd/yyyy"
+                           months-full="{{ month }}"
+                           months-short="{{ monthShort }}"
+                           weekdays-full="{{ weekdaysFull }}"
+                           weekdays-short="{{ weekdaysShort }}"
+                           weekdays-letter="{{ weekdaysLetter }}"
+                           disable="disable"
+                           min="{{ minDate }}"
+                           max="{{ maxDate }}"
+                           today="today"
+                           clear="clear"
+                           close="close"
+                           select-years="15"
+                           on-start="onStart()"
+                           on-render="onRender()"
+                           on-open="onOpen()"
+                           on-close="onClose()"
+                           on-set="onSet()"
+                           on-stop="onStop()" />
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6"></div>
+    </div>
+</div>

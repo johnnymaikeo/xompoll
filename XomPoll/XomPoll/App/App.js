@@ -13,6 +13,10 @@ xompoll.config(['$locationProvider', '$routeProvider' , function ($locationProvi
     .when('/PollManagement', {
         templateUrl: '/Event/Event',
         controller: 'EventController'
+    })
+    .when('/PollManagement/{id}', {
+        templateUrl: '/Event/EventManagement',
+        controller: 'EventManagementController'
     });
 }]);
 
@@ -33,14 +37,22 @@ xompoll.controller('LoginController', ['$scope', '$location', function ($scope, 
     }
 }]);
 
+xompoll.controller('EventManagementController', ['$scope', 'EventService', function ($scope, EventService) {
 
-xompoll.controller('EventController', ['$scope', 'EventService', function ($scope, EventService) {
+}]);
+
+xompoll.controller('EventController', ['$scope', '$location', 'EventService', function ($scope, $location, EventService) {
 
     $scope.poll = {};
+    $scope.mypolls = [];
 
     $scope.init = function () {
+        $scope.getMyPolls();
+    };
+
+    $scope.getMyPolls = function () {
         EventService.myEvents().then(function (response) {
-            console.log(response);
+            $scope.mypolls = response;
         });
     };
 
@@ -52,13 +64,18 @@ xompoll.controller('EventController', ['$scope', 'EventService', function ($scop
 
         EventService.createEvent($scope.poll).then(function (response) {
             console.log(response);
+            if (Number.isInteger(response)) {
+                $scope.getMyPolls();
+                $location.path('/PollManagement/' + response);
+            }
         });
     }
 
     /**/
+        
     var currentTime = new Date();
-    $scope.poll.startDate = currentTime;
-    $scope.poll.endDate = currentTime;
+    $scope.poll.initdate = currentTime;
+    $scope.poll.enddate = currentTime;
 
 
     $scope.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -97,15 +114,33 @@ xompoll.controller('EventController', ['$scope', 'EventService', function ($scop
 xompoll.service('EventService', ['XomPollFactory', '$q', function (XomPollFactory, $q) {
     this.myEvents = function () {
         var deferred = $q.defer();
-        XomPollFactory.Get('/Event/GetEventByUrl', 'url=test').then(function (response) {
-            deferred.resolve(response)
+        XomPollFactory.Get('/Event/GetEventsByUser', 'userid=1').then(function (response) {
+
+            var mypolls = [];
+            var today = new Date();
+
+            angular.forEach(response, function (value, key) {
+                value.InitDate = new Date(value.InitDate);
+                value.EndDate = new Date(value.EndDate);
+
+                if (value.EndDate >= today) {
+                    value.Active = true;
+                } else {
+                    value.Active = false;
+                }
+                mypolls.push(value);
+            })
+
+            deferred.resolve(mypolls)
         });
         return deferred.promise;
     };
     this.createEvent = function (event) {
         var deferred = $q.defer();
         XomPollFactory.Post('/Event/Create', event).then(function (response) {
-            deferred.resolve(response);
+            if (response.success) { 
+                deferred.resolve(response.newid);
+            }
         });
         return deferred.promise;
     };

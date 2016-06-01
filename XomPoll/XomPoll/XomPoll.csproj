@@ -412,6 +412,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Event\Event.cshtml" />
+    <Content Include="Views\Event\EventManagement.cshtml" />
     <None Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -420,7 +422,6 @@
     <Folder Include="App\Factories\" />
     <Folder Include="App\Services\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Event\" />
     <Folder Include="Views\Questions\" />
     <Folder Include="Views\Question\" />
   </ItemGroup>
