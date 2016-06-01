@@ -24,5 +24,11 @@ namespace XomPoll.Controllers
         {
             return View("Login");
         }
+
+        public ActionResult ViewTest()
+        {
+            ViewBag.Title = "TEST";
+            return View();
+        }
     }
 }

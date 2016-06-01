@@ -1,0 +1,25 @@
+﻿
+@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+}
+
+<table st-table="rowCollection" class="table table-striped">
+    <thead>
+        <tr>
+            <th>EVENT ID</th>
+            <th>QUESTION ID</th>
+            <th>QUESTION TYPE</th>
+            <th>QUESTION</th>
+            <th>DATE</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in rowCollection">
+            <td>{{row.evtid}}</td>
+            <td>{{row.qid}}</td>
+            <td>{{row.qtype}}</td>
+            <td>{{row.question}}</td>
+            <td>{{row.date}}</td>
+        </tr>
+    </tbody>
+</table>

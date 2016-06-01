@@ -9,6 +9,9 @@ namespace XomPoll.Core.Repository {
 
     public interface IQuestionRepository {
         object[] GetAnswerOptionsByQuestionId(int questionid);
+        void CreateQuestion(Question question);
+        void CreateAnswerOption(AnswerOption answer);
+        void AnswerQuestion(Answer answer);
     }
     public class QuestionRepository : IQuestionRepository {
         private readonly IDataContextFactory _dataContextFactory;
@@ -27,12 +30,22 @@ namespace XomPoll.Core.Repository {
             }
         }
 
-        public void AnswerQuestion(int questionid, int answerid) {
+        public void AnswerQuestion(Answer answer) {
             using(var ctx = _dataContextFactory.Create()) {
-                var answer = new Answer {
-                    QuestionId = questionid,
-                    AnswerOptionId = answerid
-                };
+                ctx.InsertOnSubmit(answer);
+                ctx.SubmitChanges();
+            }
+        }
+
+        public void CreateQuestion(Question question) {
+            using(var ctx = _dataContextFactory.Create()) {
+                ctx.InsertOnSubmit(question);
+                ctx.SubmitChanges();
+            }
+        }
+
+        public void CreateAnswerOption(AnswerOption answer) {
+            using(var ctx = _dataContextFactory.Create()) {
                 ctx.InsertOnSubmit(answer);
                 ctx.SubmitChanges();
             }

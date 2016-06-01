@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Repository\QuestionRepository.cs" />
+    <Compile Include="Repository\QuestionTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
